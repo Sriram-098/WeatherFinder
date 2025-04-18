@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top, #a1c4fd, #c2e9fb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .weather-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .app-title {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .input-field {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .get-weather-btn {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .get-weather-btn:hover {
+            background-color: #357ab8;
+        }
+
+        .weather-details {
+            margin-top: 25px;
+        }
+
+        .weather-location {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .weather-temp {
+            font-size: 28px;
+            color: #222;
+            margin: 10px 0;
+        }
+
+        .weather-description {
+            text-transform: capitalize;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .weather-humidity {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="weather-container">
+        <h1 class="app-title">Weather Finder</h1>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city name" class="input-field" required>
+            <br>
+            <button type="submit" class="get-weather-btn">Get Weather</button>
+        </form>
+
+        {% if city %}
+        <div class="weather-details">
+            <p class="weather-location">{{ city }}</p>
+            <p class="weather-temp">{{ temp }} °C</p>
+            <p class="weather-description">{{ description }}</p>
+            <p class="weather-humidity">Humidity: {{ humidity }}%</p>
+            <p class="weather-humidity">day: {{day}}</p>
+
+        </div>
+        {% endif %}
+        
+    </div>
+
+</body>
+</html>
