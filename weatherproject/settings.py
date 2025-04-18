@@ -69,6 +69,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'weatherproject.wsgi.application'
+CSRF_TRUSTED_ORIGINS = [
+    'https://weatherfinder-1-bzlj.onrender.com',
+]
 
 
 # Database
